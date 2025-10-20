@@ -25,10 +25,21 @@ public:
 		//Location = Value;
 		Location.X = Value.X;
 		Location.Y = Value.Y;
-
 	}
 
-private:
+	__forceinline char GetShape() 
+	{
+		return Shape;
+	}
+
+	void SetShape(char Value)
+	{
+		Shape = Value;
+	}
+
+
+protected:
 	FVector2D Location;
+	char Shape;
 };
 
