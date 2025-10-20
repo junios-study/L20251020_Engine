@@ -11,6 +11,7 @@
 #include "Goal.h"
 #include "Monster.h"
 
+FEngine* GEngine = nullptr;
 
 FEngine::FEngine():
 	World(nullptr)

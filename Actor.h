@@ -38,7 +38,6 @@ public:
 		Shape = Value;
 	}
 
-
 protected:
 	FVector2D Location;
 	char Shape;
