@@ -16,6 +16,11 @@ public:
 		return World;
 	}
 
+	__forceinline int GetKeyCode() const
+	{
+		return KeyCode;
+	}
+
 protected:
 	void Input();
 	void Tick();
@@ -24,5 +29,7 @@ protected:
 	class UWorld* World;
 
 	bool bIsRunning = true;
+
+	int KeyCode = 0;
 };
 

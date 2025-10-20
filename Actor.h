@@ -13,6 +13,7 @@ public:
 	//virtual function table ->vftbl
 	//override
 	virtual void Tick(); //이건 자식이 재정의 할수도 있다.
+	virtual void Render();
 
 
 	__forceinline FVector2D GetActorLocation() const

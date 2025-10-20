@@ -4,8 +4,8 @@
 struct FVector2D
 {
 public:
-	FVector2D(int InX = 0, int inY = 0) :
-		X(InX), Y(InX)
+	FVector2D(int InX = 0, int InY = 0) :
+		X(InX), Y(InY)
 	{
 
 	}
