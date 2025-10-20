@@ -2,28 +2,31 @@
 #include "Actor.h"
 #include "Player.h"
 
+#include <vector> //STL
+
 using namespace std;
+
 
 
 int main()
 {
-	AActor* AActors[2];
-	AActors[0] = new AActor();
-	AActors[1] = new APlayer();
+	//자료 구조. 메모리에 저장하기 위한 방법, Strandart Template Library(STL) C++, boost::asio(IOCP, epoll)
+	vector<AActor*> Actors;
+	Actors.push_back(new AActor());
+	Actors.push_back(new APlayer());
 
-	for (int i = 0; i < 2; ++i)
+	//for (int i = 0; i < Actors.size(); ++i)
+	for (auto Data : Actors)
 	{
-		AActors[i]->Tick(); // 형태 바뀜, 형태 많다. 다형성, Polymophism
+		Data->Tick(); // 형태 바뀜, 형태 많다. 다형성, Polymophism
 	}
+	 
+	for (int i = 0; i < Actors.size(); ++i)
+	{
+		delete Actors[i];
+	}
+	Actors.clear();
 
-	AActor* MyActor = new AActor();
-	APlayer* MyPlayer = new APlayer();
-
-	MyActor->Tick();
-	MyPlayer->Tick();
-
-
-	cout << 1 << endl;
 
 	return 0;
 }
