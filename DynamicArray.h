@@ -65,12 +65,13 @@ public:
 			int* NewArray = new int[Capacity * 2];
 
 			//memory copy
-			for (size_t i = 0; i < Size; ++i)
-			{
-				NewArray[i] = Data[i];
-			}
-			//memcpy(Data, NewArray, Size * sizeof(int));
-			//memmove(Data, NewArray, Size * sizeof(int));
+			//for (size_t i = 0; i < Size; ++i)
+			//{
+			//	NewArray[i] = Data[i];
+			//}
+
+			//memcpy(NewArray, Data, Size * sizeof(T));
+			memmove(NewArray, Data, Size * sizeof(int));
 
 			//NewArray, Size = 6
 			//[1][2][3][4][5][]
