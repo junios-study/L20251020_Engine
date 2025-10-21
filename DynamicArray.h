@@ -6,9 +6,9 @@ public:
 	TDynamicArray();
 	virtual ~TDynamicArray();
 
-	int Data[10];
+	int* Data = nullptr;
 
-	int Size = 10;
+	int Size = 0;
 
 	int Index = 0;
 

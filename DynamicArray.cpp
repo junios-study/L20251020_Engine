@@ -17,7 +17,26 @@ void TDynamicArray::PushBack(int Value)
 	}
 	else
 	{
-		//배열을 사이즈를 늘린다.
+		//Data, Size = 5
+		//[1][2][3][4][5]
+		//NewArray, Size = 6
+		//[][][][][][]
 
+		int* NewArray = new int[Size + 1];
+
+		for (int i = 0; i < Size; ++i)
+		{
+			NewArray[i] = Data[i];
+		}
+		//NewArray, Size = 6
+		//[1][2][3][4][5][]
+
+		delete[] Data;
+		Data = NewArray;
+		Size++;
+
+		//[1][2][3][4][5][6]
+		Data[Index] = Value;
+		Index++;
 	}
 }
