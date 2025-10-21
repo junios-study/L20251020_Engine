@@ -13,22 +13,42 @@ public:
 
 	virtual ~TDynamicArray()
 	{
-
+		if (Data)
+		{
+			delete[] Data;
+		}
 	}
 
+protected:
 	T* Data = nullptr;
 
-	int Size = 0;
-	int Capacity = 0;
+	size_t Size = 0;
+	size_t Capacity = 0;
 
-	int Index = 0;
+	int CurrentIndex = 0;
+
+public:
+	size_t GetSize()
+	{
+		return Size;
+	}
+
+	size_t GetCapacity()
+	{
+		return Capacity;
+	}
+
+	T& operator[](size_t _Index)
+	{
+		return Data[_Index];
+	}
 
 	void PushBack(T Value)
 	{
-		if (Index < Capacity)
+		if (CurrentIndex < Capacity)
 		{
-			Data[Index] = Value;
-			Index++;
+			Data[CurrentIndex] = Value;
+			CurrentIndex++;
 			Size++;
 		}
 		else
@@ -45,12 +65,12 @@ public:
 			int* NewArray = new int[Capacity * 2];
 
 			//memory copy
-			for (int i = 0; i < Size; ++i)
+			for (size_t i = 0; i < Size; ++i)
 			{
 				NewArray[i] = Data[i];
 			}
 			//memcpy(Data, NewArray, Size * sizeof(int));
-			memmove(Data, NewArray, Size * sizeof(int));
+			//memmove(Data, NewArray, Size * sizeof(int));
 
 			//NewArray, Size = 6
 			//[1][2][3][4][5][]
@@ -64,8 +84,8 @@ public:
 			Size++;
 
 			//[1][2][3][4][5][6]
-			Data[Index] = Value;
-			Index++;
+			Data[CurrentIndex] = Value;
+			CurrentIndex++;
 		}
 	}
 };
