@@ -6,7 +6,7 @@
 
 int main(int argc, char* argv[])
 {
-	TDynamicArray D;
+	TDynamicArray<int> D;
 
 	std::cout << D.Size << std::endl;
 
