@@ -26,11 +26,13 @@ public:
 StaticClass* StaticClass::Instance = nullptr;
 
 
-
 int main(int argc, char* argv[])
 {
 	StaticClass::GetInstance();
 
+	//class, Memory 
+	//DeSerialize(Byte, XML, JSON(HTTP), Protobuf, flatbuffer)->Packet
+	//File, Network
 
 	return 0;
 }
