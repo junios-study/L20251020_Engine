@@ -72,17 +72,17 @@ void FEngine::Init()
 				{
 					AActor* NewActor = new AFloor();
 					NewActor->SetActorLocation(FVector2D(X, Y));
-					NewActor->SetShape(Line[X]);
+					NewActor->SetShape(' ');
 					World->SpawnActor(NewActor);
 				}
 			}
 			Y++;
 		}
+
 	}
-
-	//sort(World->GetAllActors(), )
-
 	MapFile.close();
+
+	World->SortActor();
 }
 
 void FEngine::Run()
