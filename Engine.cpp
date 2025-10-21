@@ -80,7 +80,7 @@ void FEngine::Init()
 		}
 	}
 
-	sort(World->GetAllActors(), )
+	//sort(World->GetAllActors(), )
 
 	MapFile.close();
 }
