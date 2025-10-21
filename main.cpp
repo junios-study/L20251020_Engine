@@ -1,6 +1,7 @@
 #include "Engine.h"
 #include <iostream>
 #include <algorithm>
+#include <vector>
 
 void A()
 {
@@ -71,9 +72,93 @@ void OnReceive(int (*Callback)())
 	Callback();
 }
 
+//void Print(int* Numbers, int size)
+//{
+//	for (int i = 0; i < size; ++i)
+//	{
+//		std::cout << Numbers[i] << std::endl;
+//	}
+//}
+//
+//void Print(float* Numbers, int size)
+//{
+//	for (int i = 0; i < size; ++i)
+//	{
+//		std::cout << Numbers[i] << std::endl;
+//	}
+//}
+//
+/////
+////c언어 X
+//void Print(void* Numbers, int _SizeOfElement,  int _NumberOfElement)
+//{
+//	//자료형 하나의 크기
+//	//자료 갯수
+//	for (int i = 0; i < _NumberOfElement; ++i)
+//	{
+//	}
+//}
+
+//meta programming
+template<typename T>
+void Print(T* Numbers, int Size)
+{
+	for (int i = 0; i < Size; ++i)
+	{
+		std::cout << Numbers[i] << std::endl;
+	}
+}
+
+//void Print(float* Numbers, int Size)
+//{
+//	for (int i = 0; i < Size; ++i)
+//	{
+//		std::cout << Numbers[i] << std::endl;
+//	}
+//}
+
+//void Print(int* Numbers, int Size)
+//{
+//	for (int i = 0; i < Size; ++i)
+//	{
+//		std::cout << Numbers[i] << std::endl;
+//	}
+//}
+
+class IntClass
+{
+public:
+	int Data;
+};
+
+//compile
+//template<class T>
+template<typename T>
+class TemplateClass
+{
+public:
+	T Data;
+};
+
+
 int main(int argc, char* argv[])
 {
-	Sort(Less);
+	float Numbers[10] = { 10.1f, 6.2f, 5, 2, 9, 7, 4, 3, 1, 8.1f };
+	int IntNumbers[10] = { 10, 6, 5, 2, 9, 7, 4, 3, 1, 8 };
+	bool BoolNumbers[10] = { true, false };
+	std::string StringNumbers[10] = { "Hello", "World"};
+
+	IntClass IC;
+	IC.Data = 1;
+	TemplateClass<float> FC;
+	FC.Data = 2.0f;
+
+	std::vector<int> IntArray;
+
+	
+	//Print<std::string>(BoolNumbers, 10);
+	///Print<int>(IntNumbers, 10);
+
 
 	//Print(2, 3, Minus);
 
