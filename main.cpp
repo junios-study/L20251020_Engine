@@ -45,7 +45,8 @@ int SDL_main(int argc, char* argv[])
 			{
 				SDL_SetRenderDrawColor(MyRenderer, SDL_rand(255), SDL_rand(255), SDL_rand(255), 0);
 				SDL_FRect Rect = { SDL_rand(640), SDL_rand(480), SDL_rand(200) + 1, SDL_rand(200) + 1 };
-				SDL_RenderDrawRect(MyRenderer, &Rect);
+				//SDL_RenderDrawRect(MyRenderer, &Rect);
+				SDL_RenderFillRect(MyRenderer, &Rect);
 			}
 
 
