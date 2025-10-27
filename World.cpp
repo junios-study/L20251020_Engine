@@ -27,6 +27,7 @@ void UWorld::Tick()
 	//All Actors Process.
 	for (auto Actor : Actors)
 	{
+		//runtime시에 결정됨. 문제는 이놈이 문제.
 		Actor->Tick();
 	}
 }

@@ -1,9 +1,21 @@
 #pragma once
 
-//Data 저장용
 struct FVector2D
 {
 public:
+	//FVector2D () :
+	//	X(0), Y(0)
+	//{
+
+	//}
+
+	//복사 생성자
+	FVector2D(const FVector2D& RHS)
+	{
+		this->X = RHS.X;
+		this->Y = RHS.Y;
+	}
+
 	FVector2D(int InX = 0, int InY = 0) :
 		X(InX), Y(InY)
 	{
