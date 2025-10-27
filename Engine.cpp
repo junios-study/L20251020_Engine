@@ -28,6 +28,8 @@ FEngine::~FEngine()
 
 void FEngine::Init()
 {
+	srand((unsigned int)time(nullptr));
+
 	World = new UWorld();
 
 	std::ifstream MapFile("level01.map");
@@ -105,7 +107,10 @@ void FEngine::Term()
 
 void FEngine::Input()
 {
-	KeyCode = _getch();
+	if (_kbhit())
+	{
+		KeyCode = _getch();
+	}
 }
 
 void FEngine::Tick()
