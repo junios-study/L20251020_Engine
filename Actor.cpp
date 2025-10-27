@@ -24,3 +24,22 @@ void AActor::Render()
 	SetConsoleCursorPosition((HANDLE)GetStdHandle(STD_OUTPUT_HANDLE), Posistion);
 	std::cout << Shape;
 }
+
+bool AActor::CheckCollsion(const AActor* OtherActor)
+{
+	if (OtherActor->bIsCollision && bIsCollision &&
+		this->Location == OtherActor->Location)
+	{
+		return true;
+	}
+
+	return false;
+}
+
+void AActor::ActorBeginOverlap()
+{
+}
+
+void AActor::Hit()
+{
+}

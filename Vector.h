@@ -27,6 +27,14 @@ public:
 
 	}
 
+	FVector2D& operator=(const FVector2D& RHS)
+	{
+		this->X = RHS.X;
+		this->Y = RHS.Y;
+
+		return *this;
+	}
+
 	FVector2D operator+(const FVector2D& RHS)
 	{
 		return FVector2D(this->X + RHS.X, this->Y + RHS.Y);
@@ -35,6 +43,11 @@ public:
 	FVector2D operator-(const FVector2D& RHS)
 	{
 		return FVector2D(this->X - RHS.X, this->Y - RHS.Y);
+	}
+
+	bool operator==(const FVector2D& RHS)
+	{
+		return (this->X == RHS.X && this->Y == RHS.Y);
 	}
 
 	int X;

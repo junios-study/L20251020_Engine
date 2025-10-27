@@ -43,9 +43,21 @@ public:
 		return ZOrder;
 	}
 
+	//virtual void SimulatePhysics();
+	bool CheckCollsion(const AActor* Other);
+
+
+	virtual void ActorBeginOverlap();
+	virtual void Hit();
+
+
 protected:
 	FVector2D Location;
 	char Shape;
 	int ZOrder;
+
+public:
+	bool bIsCollision = false; 
+	bool bIsOverlap = true;
 };
 
