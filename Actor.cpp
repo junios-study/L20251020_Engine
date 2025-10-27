@@ -27,8 +27,8 @@ void AActor::Render()
 
 bool AActor::CheckCollsion(const AActor* OtherActor)
 {
-	if (OtherActor->bIsCollision && bIsCollision &&
-		this->Location == OtherActor->Location)
+	if (this != OtherActor && OtherActor->bIsCollision && bIsCollision &&
+		this->Location == OtherActor->Location) //영역 계산
 	{
 		return true;
 	}
