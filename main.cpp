@@ -1,5 +1,9 @@
+#define SDL_ENABLE_OLD_NAMES
+
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
+
+
 
 #pragma comment(lib, "SDL3")
 
@@ -32,10 +36,17 @@ int SDL_main(int argc, char* argv[])
 		else
 		{
 			//command queue
-			SDL_SetRenderDrawColor(MyRenderer, 0, 0, 255, 0);
+			SDL_SetRenderDrawColor(MyRenderer, 255, 255, 255, 0);
 			SDL_RenderClear(MyRenderer);
 
 			//화면 업데이트, 사각형 100개를 랜덤으로 그려주세요.
+
+			for (int i = 0; i <= 100; ++i)
+			{
+				SDL_SetRenderDrawColor(MyRenderer, SDL_rand(255), SDL_rand(255), SDL_rand(255), 0);
+				SDL_FRect Rect = { SDL_rand(640), SDL_rand(480), SDL_rand(200) + 1, SDL_rand(200) + 1 };
+				SDL_RenderDrawRect(MyRenderer, &Rect);
+			}
 
 
 			SDL_RenderPresent(MyRenderer);
