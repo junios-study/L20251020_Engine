@@ -8,6 +8,7 @@ APlayer::APlayer()
 {
 	ZOrder = 1003;
 	bIsCollision = true;
+	bIsOverlap = true;
 }
 
 APlayer::~APlayer()

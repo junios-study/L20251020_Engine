@@ -11,6 +11,7 @@
 #include "Player.h"
 #include "Goal.h"
 #include "Monster.h"
+#include "GameMode.h"
 
 //FEngine* GEngine = nullptr;
 
@@ -83,6 +84,9 @@ void FEngine::Init()
 	MapFile.close();
 
 	World->SortActor();
+
+	//UE Gameplay Framework
+	World->SpawnActor(new AGameMode());
 }
 
 void FEngine::Run()
