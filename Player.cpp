@@ -64,16 +64,14 @@ void APlayer::Tick()
 
 	for (auto OtherActor : AllActors)
 	{
-		for (auto Component : OtherActor->Components)
+		UCollisionComponent* OtherCollision = OtherActor->GetComponent<UCollisionComponent>();
+
+		if (OtherCollision)
 		{
-			UCollisionComponent* OtherCollision = dynamic_cast<UCollisionComponent*>(Component);
-			if (OtherCollision)
+			if (Collision->CheckCollsion(OtherCollision))
 			{
-				if (Collision->CheckCollsion(OtherCollision))
-				{
-					bFlag = true;
-					break;
-				}
+				bFlag = true;
+				break;
 			}
 		}
 	}

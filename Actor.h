@@ -27,11 +27,19 @@ public:
 		Location.Y = Value.Y;
 	}
 
-	//template<typename T>
-	//UComponent* GetComponent<T>()
-	//{
-	//	dynamic_cast<T*>(Comepnot)
-	//}
+	template<typename T>
+	T* GetComponent()
+	{
+		for (auto Component : Components)
+		{
+			if (dynamic_cast<T*>(Component))
+			{
+				return dynamic_cast<T*>(Component);
+			}
+		}
+
+		return nullptr;
+	}
 
 
 
@@ -46,7 +54,7 @@ protected:
 	FVector2D Location;
 
 
-	
+
 
 public:
 
