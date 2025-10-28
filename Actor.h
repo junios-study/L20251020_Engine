@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Vector.h"
+#include "SDL3/SDL.h"
 
 //2d 
 
@@ -59,5 +60,8 @@ protected:
 public:
 	bool bIsCollision = false; 
 	bool bIsOverlap = true;
+
+	SDL_Color Color = { 255, 255, 255, 255 };
+
 };
 
