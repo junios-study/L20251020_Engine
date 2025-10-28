@@ -3,13 +3,19 @@
 #include "Actor.h"
 #include "World.h"
 #include <vector>
+#include "PaperFilpbookComponent.h"
 
 AMonster::AMonster()
 {
-	//ZOrder = 1001;
 	bIsCollision = true;
 	bIsOverlap = true;
-	//Color = { 0, 0, 255, 0 };
+
+	UPaperFilpbookComponent* Paper = new UPaperFilpbookComponent();
+	Paper->SetShape('M');
+	Paper->SetOwner(this);
+	Paper->ZOrder = 1001;
+	Paper->Color = SDL_Color{ 0, 0, 255, 0 };
+	AddComponent(Paper);
 }
 
 AMonster::~AMonster()

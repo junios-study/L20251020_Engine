@@ -1,5 +1,7 @@
 #include "World.h"
 #include "Actor.h"
+#include "SceneComponent.h"
+#include "PaperFilpbookComponent.h"
 
 UWorld::UWorld()
 {
@@ -36,23 +38,63 @@ void UWorld::Render()
 {
 	for (auto Actor : Actors)
 	{
-		//Actor->Render();
+		for (auto Component : Actor->Components)
+		{
+			USceneComponent* Scene = dynamic_cast<USceneComponent*>(Component);
+			if (Scene)
+			{
+				Scene->Render();
+			}
+		}
 	}
 }
 
+//[][][][][]
 void UWorld::SortActor()
 {
-	//for (int j = 0; j < Actors.size(); ++j)
-	//{
-	//	for (int i = 0; i < Actors.size(); ++i)
-	//	{
-	//		if (Actors[j]->GetZOrder() < Actors[i]->GetZOrder())
-	//		{
-	//			AActor* Temp = Actors[j];
-	//			Actors[j] = Actors[i];
-	//			Actors[i] = Temp;
-	//		}
-	//	}
-	//}
+	for (int j = 0; j < Actors.size(); ++j)
+	{
+		//선택한 액터
+		UPaperFilpbookComponent* Scene1 = nullptr;
+		for (auto Component : Actors[j]->Components)
+		{
+			Scene1 = dynamic_cast<UPaperFilpbookComponent*>(Component);
+			if (Scene1)
+			{
+				break;
+			}
+		}
+
+		if (!Scene1)
+		{
+			continue;
+		}
+
+		for (int i = 0; i < Actors.size(); ++i)
+		{
+			UPaperFilpbookComponent* Scene2 = nullptr;
+			for (auto Component : Actors[i]->Components)
+			{
+				Scene2 = dynamic_cast<UPaperFilpbookComponent*>(Component);
+				if (Scene2)
+				{
+					break;
+				}
+			}
+
+			if (!Scene2)
+			{
+				continue;
+			}
+
+
+			if (Scene1->GetZOrder() < Scene2->GetZOrder())
+			{
+				AActor* Temp = Actors[j];
+				Actors[j] = Actors[i];
+				Actors[i] = Temp;
+			}
+		}
+	}
 }
 

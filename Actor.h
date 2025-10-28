@@ -36,11 +36,13 @@ public:
 
 	void AddComponent(UComponent* InComponent);
 
+	std::vector<class UComponent*> Components;
+
 protected:
 	FVector2D Location;
 
 
-	std::vector<class UComponent*> Components;
+	
 
 public:
 	bool bIsCollision = false; 
