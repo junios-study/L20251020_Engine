@@ -12,6 +12,7 @@
 #include "Goal.h"
 #include "Monster.h"
 #include "GameMode.h"
+#include "Timer.h"
 
 
 //FEngine* GEngine = nullptr;
@@ -19,12 +20,24 @@
 FEngine* FEngine::Instance = nullptr;
 
 FEngine::FEngine():
-	World(nullptr)
+	World(nullptr), MyEvent(SDL_Event())
 {
+	MyRenderer = nullptr;
+	MyWindow = nullptr;
+	Timer = new UTimer();
 }
 
 FEngine::~FEngine()
 {
+	if (World)
+	{
+		delete World;
+	}
+
+	if (Timer)
+	{
+		delete Timer;
+	}
 }
 
 void FEngine::Init()
@@ -106,10 +119,13 @@ void FEngine::Run()
 {
 	while (bIsRunning)
 	{
+		Timer->Tick();
+
 		SDL_PollEvent(&MyEvent);
 		//Input();
 		Tick();
 		Render();
+
 	}
 }
 
@@ -143,4 +159,10 @@ void FEngine::Render()
 	GetWorld()->Render();
 
 	SDL_RenderPresent(MyRenderer);
+}
+
+
+double FEngine::GetWorldDeltaSeconds() const
+{
+	return Timer->DeltaSeconds;
 }

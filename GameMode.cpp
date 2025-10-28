@@ -7,6 +7,7 @@
 #include "Goal.h"
 
 
+
 AGameMode::AGameMode()
 {
 	bIsCollision = false;
@@ -58,6 +59,7 @@ void AGameMode::Tick()
 	}
 
 
+	SDL_Log("deltaSeconds : %f", GEngine->GetWorldDeltaSeconds());
 
 	//if (Player == Monster)
 	//{

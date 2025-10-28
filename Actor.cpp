@@ -33,10 +33,10 @@ void AActor::Render()
 	//SDL_RenderDrawPoint(GEngine->MyRenderer, (float)Location.X, (float)Location.Y);
 	SDL_FRect DrawRect =
 	{ 
-		Location.X * SizeX,
-		Location.Y * SizeY,
-		SizeX,
-		SizeY
+		(float)(Location.X * SizeX),
+		(float)(Location.Y * SizeY),
+		(float)SizeX,
+		(float)SizeY
 	};
 	SDL_RenderFillRect(GEngine->MyRenderer, &DrawRect);
 }
