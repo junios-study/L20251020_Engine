@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL3/SDL.h>
+#include "Input.h"
 
 #pragma comment(lib, "SDL3")
 
@@ -28,7 +29,7 @@ public:
 
 	__forceinline int GetKeyCode() const
 	{
-		return KeyCode;
+		return UInput::KeyCode;
 	}
 
 protected:
@@ -40,7 +41,7 @@ protected:
 
 	bool bIsRunning = true;
 
-	int KeyCode = 0;
+	//int KeyCode = 0;
 
 
 public:
@@ -56,14 +57,15 @@ public:
 	double GetWorldDeltaSeconds() const;
 
 
-	SDL_Window* MyWindow;
-	SDL_Renderer* MyRenderer;
-	SDL_Event MyEvent;
+	SDL_Window* MyWindow = nullptr;
+	SDL_Renderer* MyRenderer = nullptr;
+	SDL_Event MyEvent = SDL_Event();
 
 protected:
 	static FEngine* Instance;
 
 	class UTimer* Timer = nullptr;
+	class UInput* InputDevice = nullptr;
 };
 
 //extern FEngine* GEngine;
