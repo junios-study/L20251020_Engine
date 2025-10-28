@@ -54,7 +54,7 @@ void UWorld::SortActor()
 {
 	for (int j = 0; j < Actors.size(); ++j)
 	{
-		//선택한 액터
+		//기준 액터에 UPaperFilpbookComponent 있는지 확인
 		UPaperFilpbookComponent* Scene1 = nullptr;
 		for (auto Component : Actors[j]->Components)
 		{
@@ -72,6 +72,7 @@ void UWorld::SortActor()
 
 		for (int i = 0; i < Actors.size(); ++i)
 		{
+			//선택한 액터에 UPaperFilpbookComponent 있는지 확인
 			UPaperFilpbookComponent* Scene2 = nullptr;
 			for (auto Component : Actors[i]->Components)
 			{
