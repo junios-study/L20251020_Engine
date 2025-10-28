@@ -1,4 +1,9 @@
 #pragma once
+#include <SDL3/SDL.h>
+
+#pragma comment(lib, "SDL3")
+
+
 class UWorld;
 
 class FEngine
@@ -13,6 +18,8 @@ public:
 	virtual void Init();
 	virtual void Run();
 	virtual void Term();
+
+	void OpenLevel();
 
 	__forceinline UWorld* GetWorld() const
 	{
@@ -45,6 +52,10 @@ public:
 		}
 		return Instance;
 	}
+
+	SDL_Window* MyWindow;
+	SDL_Renderer* MyRenderer;
+	SDL_Event MyEvent;
 
 protected:
 	static FEngine* Instance;

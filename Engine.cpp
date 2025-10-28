@@ -13,6 +13,7 @@
 #include "Monster.h"
 #include "GameMode.h"
 
+
 //FEngine* GEngine = nullptr;
 
 FEngine* FEngine::Instance = nullptr;
@@ -27,6 +28,16 @@ FEngine::~FEngine()
 }
 
 void FEngine::Init()
+{
+	SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
+
+	MyWindow = SDL_CreateWindow("Engine", 800, 600, SDL_WINDOW_OPENGL);
+	MyRenderer = SDL_CreateRenderer(MyWindow, nullptr);
+
+	OpenLevel();
+}
+
+void FEngine::OpenLevel()
 {
 	srand((unsigned int)time(nullptr));
 
@@ -95,7 +106,8 @@ void FEngine::Run()
 {
 	while (bIsRunning)
 	{
-		Input();
+		SDL_PollEvent(&MyEvent);
+		//Input();
 		Tick();
 		Render();
 	}
@@ -103,6 +115,11 @@ void FEngine::Run()
 
 void FEngine::Term()
 {
+	SDL_DestroyRenderer(MyRenderer);
+
+	SDL_DestroyWindow(MyWindow);
+
+	SDL_Quit();
 }
 
 void FEngine::Input()
