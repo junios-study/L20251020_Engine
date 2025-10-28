@@ -25,7 +25,7 @@ public:
 		memmove(this->Data, RHS.Data, Size * sizeof(int));
 	}
 
-	//대입 연산자.
+	////대입 연산자.
 	TDynamicArray<T>& operator=(const TDynamicArray<T>& RHS)
 	{
 		this->Size = RHS.Size;

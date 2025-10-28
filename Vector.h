@@ -3,6 +3,9 @@
 struct FVector2D
 {
 public:
+
+	//constructor overload
+
 	//FVector2D () :
 	//	X(0), Y(0)
 	//{
