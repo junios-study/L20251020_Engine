@@ -1,9 +1,9 @@
 #pragma once
 
 #include "Vector.h"
-#include "SDL3/SDL.h"
+#include <vector>
 
-//2d 
+class UComponent;
 
 class AActor
 {
@@ -14,8 +14,6 @@ public:
 	//virtual function table ->vftbl
 	//override
 	virtual void Tick(); //이건 자식이 재정의 할수도 있다.
-	virtual void Render();
-
 
 	__forceinline FVector2D GetActorLocation() const
 	{
@@ -29,21 +27,6 @@ public:
 		Location.Y = Value.Y;
 	}
 
-	__forceinline char GetShape() 
-	{
-		return Shape;
-	}
-
-	void SetShape(char Value)
-	{
-		Shape = Value;
-	}
-
-	__forceinline int GetZOrder() const
-	{
-		return ZOrder;
-	}
-
 	//virtual void SimulatePhysics();
 	bool CheckCollsion(const AActor* Other);
 
@@ -51,17 +34,17 @@ public:
 	virtual void ActorBeginOverlap();
 	virtual void Hit();
 
+	void AddComponent(UComponent* InComponent);
 
 protected:
 	FVector2D Location;
-	char Shape;
-	int ZOrder;
+
+
+	std::vector<class UComponent*> Components;
 
 public:
 	bool bIsCollision = false; 
 	bool bIsOverlap = true;
-
-	SDL_Color Color = { 255, 255, 255, 255 };
 
 };
 

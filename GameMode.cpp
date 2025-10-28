@@ -71,8 +71,3 @@ void AGameMode::Tick()
 	//	complete
 	//}
 }
-
-void AGameMode::Render()
-{
-
-}
