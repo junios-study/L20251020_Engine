@@ -2,6 +2,7 @@
 #include "Actor.h"
 #include "SceneComponent.h"
 #include "PaperFilpbookComponent.h"
+#include <algorithm>
 
 UWorld::UWorld()
 {
@@ -49,9 +50,72 @@ void UWorld::Render()
 	}
 }
 
+bool CompareActor(const AActor* A, const AActor* B)
+{
+	UPaperFilpbookComponent* Scene1 = nullptr;
+	for (auto Component : A->Components)
+	{
+		Scene1 = dynamic_cast<UPaperFilpbookComponent*>(Component);
+		if (Scene1)
+		{
+			break;
+		}
+	}
+
+	UPaperFilpbookComponent* Scene2 = nullptr;
+	for (auto Component : B->Components)
+	{
+		Scene2 = dynamic_cast<UPaperFilpbookComponent*>(Component);
+		if (Scene2)
+		{
+			break;
+		}
+	}
+
+	if (!Scene1 || !Scene2)
+	{
+		return false;
+	}
+
+	return (Scene1->GetZOrder() < Scene2->GetZOrder());
+}
+
 //[][][][][]
 void UWorld::SortActor()
 {
+	int Money = 0;
+	//std::sort(Actors.begin(), Actors.end(), [] (const AActor * A, const AActor * B) {
+	//	UPaperFilpbookComponent* Scene1 = nullptr;
+	//	for (auto Component : A->Components)
+	//	{
+	//		Scene1 = dynamic_cast<UPaperFilpbookComponent*>(Component);
+	//		if (Scene1)
+	//		{
+	//			break;
+	//		}
+	//	}
+
+	//	UPaperFilpbookComponent* Scene2 = nullptr;
+	//	for (auto Component : B->Components)
+	//	{
+	//		Scene2 = dynamic_cast<UPaperFilpbookComponent*>(Component);
+	//		if (Scene2)
+	//		{
+	//			break;
+	//		}
+	//	}
+
+	//	if (!Scene1 || !Scene2)
+	//	{
+	//		return false;
+	//	}
+
+	//	return (Scene1->GetZOrder() < Scene2->GetZOrder());
+	//});
+
+	//std::sort(Actors.begin(), Actors.end(), CompareActor);
+
+	//return;
 	for (int j = 0; j < Actors.size(); ++j)
 	{
 		//기준 액터에 UPaperFilpbookComponent 있는지 확인
