@@ -6,16 +6,14 @@ AWall::AWall()
 {
 	UPaperFilpbookComponent* Paper = new UPaperFilpbookComponent();
 	Paper->SetShape('*');
-	Paper->SetOwner(this);
 	Paper->ZOrder = 1000;
 	Paper->Color = SDL_Color{ 128, 128, 128, 0 };
-	AddComponent(Paper);
+	SetupAttachment(Paper);
 
 	UCollisionComponent* Collision = new UCollisionComponent();
-	Collision->SetOwner(this);
 	Collision->bIsCollision = true;
 	Collision->bIsOverlap = false;
-	AddComponent(Collision);
+	SetupAttachment(Collision);
 }
 
 AWall::~AWall()

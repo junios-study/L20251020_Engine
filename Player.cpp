@@ -11,16 +11,14 @@ APlayer::APlayer()
 {
 	Flipbook = new UPaperFilpbookComponent();
 	Flipbook->SetShape('P');
-	Flipbook->SetOwner(this);
 	Flipbook->ZOrder = 1003;
 	Flipbook->Color = SDL_Color{ 255, 0, 0, 255 };
-	AddComponent(Flipbook);
+	SetupAttachment(Flipbook);
 
 	Collision = new UCollisionComponent();
-	Collision->SetOwner(this);
 	Collision->bIsCollision = true;
 	Collision->bIsOverlap = true;
-	AddComponent(Collision);
+	SetupAttachment(Collision);
 
 }
 

@@ -38,7 +38,7 @@ public:
 	virtual void ActorBeginOverlap();
 	virtual void Hit();
 
-	void AddComponent(UComponent* InComponent);
+	void SetupAttachment(UComponent* InComponent);
 
 	std::vector<class UComponent*> Components;
 

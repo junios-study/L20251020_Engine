@@ -11,16 +11,14 @@ AMonster::AMonster()
 {
 	Flipbook = new UPaperFilpbookComponent();
 	Flipbook->SetShape('M');
-	Flipbook->SetOwner(this);
 	Flipbook->ZOrder = 1001;
 	Flipbook->Color = SDL_Color{ 0, 0, 255, 0 };
-	AddComponent(Flipbook);
+	SetupAttachment(Flipbook);
 
 	Collision = new UCollisionComponent();
-	Collision->SetOwner(this);
 	Collision->bIsCollision = true;
 	Collision->bIsOverlap = true;
-	AddComponent(Collision);
+	SetupAttachment(Collision);
 }
 
 AMonster::~AMonster()

@@ -32,7 +32,8 @@ void AActor::Hit()
 {
 }
 
-void AActor::AddComponent(UComponent* InComponent)
+void AActor::SetupAttachment(UComponent* InComponent)
 {
+	InComponent->SetOwner(this);
 	Components.push_back(InComponent);
 }
