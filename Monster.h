@@ -1,6 +1,9 @@
 #pragma once
 #include "Actor.h"
 
+class UCollisionComponent;
+class UPaperFilpbookComponent;
+
 class AMonster : public AActor
 {
 public:
@@ -11,5 +14,8 @@ public:
 
 	float ExecuteTime  = 0.2f;
 	float TotalTime = 0.f;
+
+	UCollisionComponent* Collision;
+	UPaperFilpbookComponent* Flipbook;
 };
 

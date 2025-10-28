@@ -2,6 +2,9 @@
 
 #include "Actor.h"
 
+class UCollisionComponent;
+class UPaperFilpbookComponent;
+
 class APlayer : public AActor
 {
 public:
@@ -9,5 +12,8 @@ public:
 	virtual ~APlayer();
 
 	virtual void Tick() override; //이건 부모한테 있는건데 재정의 함, 내 자식도 재정의 가능
+
+	UCollisionComponent* Collision;
+	UPaperFilpbookComponent* Flipbook;
 };
 

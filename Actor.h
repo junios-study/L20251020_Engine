@@ -27,8 +27,12 @@ public:
 		Location.Y = Value.Y;
 	}
 
-	//virtual void SimulatePhysics();
-	bool CheckCollsion(const AActor* Other);
+	//template<typename T>
+	//UComponent* GetComponent<T>()
+	//{
+	//	dynamic_cast<T*>(Comepnot)
+	//}
+
 
 
 	virtual void ActorBeginOverlap();
@@ -45,8 +49,7 @@ protected:
 	
 
 public:
-	bool bIsCollision = false; 
-	bool bIsOverlap = true;
+
 
 };
 

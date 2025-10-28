@@ -27,11 +27,11 @@ public:
 		return ZOrder;
 	}
 
-	int ZOrder;
+	int ZOrder = 0;
 	SDL_Color Color = { 255, 255, 255, 255 };
 
 protected:
-	char Shape;
+	char Shape = ' ';
 
 };
 

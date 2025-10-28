@@ -4,18 +4,23 @@
 #include "World.h"
 #include <vector>
 #include "PaperFilpbookComponent.h"
+#include "Component.h"
+#include "CollisionComponent.h"
 
 AMonster::AMonster()
 {
-	bIsCollision = true;
-	bIsOverlap = true;
+	Flipbook = new UPaperFilpbookComponent();
+	Flipbook->SetShape('M');
+	Flipbook->SetOwner(this);
+	Flipbook->ZOrder = 1001;
+	Flipbook->Color = SDL_Color{ 0, 0, 255, 0 };
+	AddComponent(Flipbook);
 
-	UPaperFilpbookComponent* Paper = new UPaperFilpbookComponent();
-	Paper->SetShape('M');
-	Paper->SetOwner(this);
-	Paper->ZOrder = 1001;
-	Paper->Color = SDL_Color{ 0, 0, 255, 0 };
-	AddComponent(Paper);
+	Collision = new UCollisionComponent();
+	Collision->SetOwner(this);
+	Collision->bIsCollision = true;
+	Collision->bIsOverlap = true;
+	AddComponent(Collision);
 }
 
 AMonster::~AMonster()
@@ -60,10 +65,17 @@ void AMonster::Tick()
 
 	for (auto OtherActor : AllActors)
 	{
-		if (CheckCollsion(OtherActor))
+		for (auto Component : OtherActor->Components)
 		{
-			bFlag = true;
-			break;
+			UCollisionComponent* OtherCollision = dynamic_cast<UCollisionComponent*>(Component);
+			if (OtherCollision)
+			{
+				if (Collision->CheckCollsion(OtherCollision))
+				{
+					bFlag = true;
+					break;
+				}
+			}
 		}
 	}
 
