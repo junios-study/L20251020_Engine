@@ -30,6 +30,7 @@ APlayer::~APlayer()
 
 void APlayer::Tick()
 {
+
 	//많이 안 쓰지만 어쩔수 없이 해야 되는 전역 변수
 	int KeyCode = GEngine->GetKeyCode();
 	FVector2D SaveLocation;
@@ -38,18 +39,22 @@ void APlayer::Tick()
 	if (KeyCode == SDLK_w || KeyCode == SDLK_UP)
 	{
 		Location.Y--;
+		Flipbook->YIndex = 2;
 	}
 	if (KeyCode == SDLK_s || KeyCode == SDLK_DOWN)
 	{
 		Location.Y++;
+		Flipbook->YIndex = 3;
 	}
 	if (KeyCode == SDLK_a || KeyCode == SDLK_LEFT)
 	{
 		Location.X--;
+		Flipbook->YIndex = 0;
 	}
 	if (KeyCode == SDLK_d || KeyCode == SDLK_RIGHT)
 	{
 		Location.X++;
+		Flipbook->YIndex = 1;
 	}
 
 	if (KeyCode == SDLK_ESCAPE)

@@ -41,9 +41,13 @@ public:
 	float SpiriteCountY = 5;
 	float XIndex = 0;
 	float YIndex = 0;
+	int SizeX = 60;
+	int SizeY = 60;
+	float AnimationUpdateTime = 0.2f;
 
 protected:
 	char Shape = ' ';
+	float elpasedTime = 0.0f;
 
 };
 

@@ -29,9 +29,13 @@ void UPaperFilpbookComponent::Tick()
 {
 	if (bAnimation)
 	{
-		XIndex++;
-		XIndex = (float)((int)XIndex % (int)SpiriteCountX);
-		SDL_Log("Index X : %f", XIndex);
+		elpasedTime += (float)GEngine->GetWorldDeltaSeconds();
+		if (elpasedTime >= AnimationUpdateTime)
+		{
+			XIndex++;
+			XIndex = (float)((int)XIndex % (int)SpiriteCountX);
+			elpasedTime = 0;
+		}
 	}
 }
 
@@ -44,8 +48,6 @@ void UPaperFilpbookComponent::Render()
 	//SetConsoleCursorPosition((HANDLE)GetStdHandle(STD_OUTPUT_HANDLE), Posistion);
 	//std::cout << Shape;
 
-	int SizeX = 30;
-	int SizeY = 30;
 	if (!BitmapImage && !Texture)
 	{
 		SDL_SetRenderDrawColor(GEngine->MyRenderer, Color.r,

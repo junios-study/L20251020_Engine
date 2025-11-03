@@ -55,16 +55,18 @@ void FEngine::Init()
 	MyWindow = SDL_CreateWindow("Engine", 800, 600, SDL_WINDOW_OPENGL);
 	MyRenderer = SDL_CreateRenderer(MyWindow, nullptr);
 
-	OpenLevel();
+	OpenLevel("level02.map");
 }
 
-void FEngine::OpenLevel()
+void FEngine::OpenLevel(std::string LevelName)
 {
 	srand((unsigned int)time(nullptr));
 
 	World = new UWorld();
 
-	std::ifstream MapFile("level01.map");
+	std::ifstream MapFile(LevelName.c_str());
+	int MaxX = 0;
+	int MaxY = 0;
 
 	if (MapFile.is_open())
 	{
@@ -73,6 +75,11 @@ void FEngine::OpenLevel()
 		while (MapFile.getline(Buffer, 80))
 		{
 			std::string Line = Buffer;
+			if (MaxX <= (int)Line.size())
+			{
+				MaxX = (int)Line.size();
+			}
+
 			for (int X = 0; X < Line.size(); ++X)
 			{
 				if (Line[X] == '*')
@@ -128,6 +135,11 @@ void FEngine::OpenLevel()
 				}
 			}
 			Y++;
+
+			if (MaxY <= Y)
+			{
+				MaxY = Y;
+			}
 		}
 
 	}
@@ -137,6 +149,9 @@ void FEngine::OpenLevel()
 
 	//UE Gameplay Framework
 	World->SpawnActor(new AGameMode());
+
+	SDL_SetWindowSize(MyWindow, MaxX * 60, MaxY * 60);
+
 }
 
 void FEngine::Run()

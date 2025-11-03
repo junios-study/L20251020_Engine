@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+
 #include <SDL3/SDL.h>
 #include "Input.h"
 
@@ -20,7 +22,7 @@ public:
 	virtual void Run();
 	virtual void Term();
 
-	void OpenLevel();
+	void OpenLevel(std::string LevelName);
 
 	__forceinline UWorld* GetWorld() const
 	{
