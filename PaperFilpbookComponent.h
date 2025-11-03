@@ -35,6 +35,12 @@ public:
 	SDL_Color Color = { 255, 255, 255, 255 };
 	SDL_Surface* BitmapImage = nullptr;
 	SDL_Texture* Texture = nullptr;
+	SDL_Color ColorKey = { 255, 0, 255, 255 };
+	bool bAnimation = false;
+	float SpiriteCountX = 5;
+	float SpiriteCountY = 5;
+	float XIndex = 0;
+	float YIndex = 0;
 
 protected:
 	char Shape = ' ';

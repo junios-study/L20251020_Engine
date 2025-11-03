@@ -80,12 +80,15 @@ void FEngine::OpenLevel()
 					AActor* NewActor = new AWall();
 					NewActor->SetActorLocation(FVector2D(X, Y));
 					//NewActor->SetShape(Line[X]);
+					NewActor->GetComponent<UPaperFilpbookComponent>()->LoadBMP("./Data/Wall.bmp");
 					World->SpawnActor(NewActor);
 				}
 				else if (Line[X] == 'P')
 				{
 					AActor* NewActor = new APlayer();
 					NewActor->SetActorLocation(FVector2D(X, Y));
+					NewActor->GetComponent<UPaperFilpbookComponent>()->LoadBMP("./Data/Player.bmp");
+					NewActor->GetComponent<UPaperFilpbookComponent>()->bAnimation = true;
 					//NewActor->SetShape(Line[X]);
 					World->SpawnActor(NewActor);
 				}
@@ -93,7 +96,10 @@ void FEngine::OpenLevel()
 				{
 					AActor* NewActor = new AMonster();
 					NewActor->SetActorLocation(FVector2D(X, Y));
-					NewActor->GetComponent<UPaperFilpbookComponent>()->LoadBMP("./Data/Slime.bmp");
+					//unity Style
+					UPaperFilpbookComponent* Flipbook = NewActor->GetComponent<UPaperFilpbookComponent>();
+					Flipbook->ColorKey = { 255, 255, 255, 255 };
+					Flipbook->LoadBMP("./Data/Slime.bmp");
 					//NewActor->SetShape(Line[X]);
 					World->SpawnActor(NewActor);
 				}
@@ -102,12 +108,21 @@ void FEngine::OpenLevel()
 					AActor* NewActor = new AGoal();
 					NewActor->SetActorLocation(FVector2D(X, Y));
 					//NewActor->SetShape(Line[X]);
+					AGoal* DownActor = dynamic_cast<AGoal*>(NewActor);
+					//UnrealStyle
+					if (DownActor)
+					{
+						DownActor->Flipbook->ColorKey = { 255, 255, 255, 255 };
+						DownActor->Flipbook->LoadBMP("./Data/Goal.bmp");
+					}
+
 					World->SpawnActor(NewActor);
 				}
 
 				{
 					AActor* NewActor = new AFloor();
 					NewActor->SetActorLocation(FVector2D(X, Y));
+					NewActor->GetComponent<UPaperFilpbookComponent>()->LoadBMP("./Data/Floor.bmp");
 					//NewActor->SetShape(' ');
 					World->SpawnActor(NewActor);
 				}
