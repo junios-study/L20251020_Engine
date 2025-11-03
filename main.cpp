@@ -4,7 +4,6 @@
 
 int SDL_main(int argc, char* argv[])
 {
-
 	SDL_Time deltaSeconds = SDL_GetTicks64();
 
 	GEngine->Init();

@@ -14,6 +14,7 @@
 #include "GameMode.h"
 #include "Timer.h"
 #include "Input.h"
+#include "PaperFilpbookComponent.h"
 
 
 //FEngine* GEngine = nullptr;
@@ -92,6 +93,7 @@ void FEngine::OpenLevel()
 				{
 					AActor* NewActor = new AMonster();
 					NewActor->SetActorLocation(FVector2D(X, Y));
+					NewActor->GetComponent<UPaperFilpbookComponent>()->LoadBMP("./Data/Slime.bmp");
 					//NewActor->SetShape(Line[X]);
 					World->SpawnActor(NewActor);
 				}
